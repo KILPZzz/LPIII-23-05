@@ -2,7 +2,7 @@
 // Lucas ("Polubo") Bissolotti
 // Felipe ("FelipeeeDF") Daudt Ferreira
 // Gustavo ("Killpz") Henryk
-// teste
+
 # Calculadora de Figuras Geométricas
 
 Este projeto é uma simulação de figuras geométricas utilizando conceitos de **Programação Orientada a Objetos (POO)** implementados em **JavaScript** e exibidos em uma interface web com **HTML e CSS**.
