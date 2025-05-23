@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Figuras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calculadora de Área e Perímetro das Figuras</h1>
+
+    <div id="resultado"></div>
+
+    <script>
+        class Figura {
+            constructor(cor) {
+                this.cor = cor;
+            }
+            calculaArea() {
+                throw "Método abstrato!";
+            }
+            calculaPerimetro() {
+                throw "Método abstrato!";
+            }
+        }
+
+        class Retangulo extends Figura {
+            constructor(cor, base, altura) {
+                super(cor);
+                this.base = base;
+                this.altura = altura;
+            }
+            calculaArea() {
+                return this.base * this.altura;
+            }
+            calculaPerimetro() {
+                return 2 * (this.base + this.altura);
+            }
+            toString() {
+                return `Retângulo [Cor: ${this.cor}, Base: ${this.base}, Altura: ${this.altura}]`;
+            }
+        }
+
+        class Circulo extends Figura {
+            constructor(cor, raio) {
+                super(cor);
+                this.raio = raio;
+            }
+            calculaArea() {
+                return Math.PI * Math.pow(this.raio, 2);
+            }
+            calculaPerimetro() {
+                return 2 * Math.PI * this.raio;
+            }
+            toString() {
+                return `Círculo [Cor: ${this.cor}, Raio: ${this.raio}]`;
+            }
+        }
+
+        class Triangulo extends Figura {
+            constructor(cor, base, altura, lado1, lado2) {
+                super(cor);
+                this.base = base;
+                this.altura = altura;
+                this.lado1 = lado1;
+                this.lado2 = lado2;
+            }
+            calculaArea() {
+                return (this.base * this.altura) / 2;
+            }
+            calculaPerimetro() {
+                return this.base + this.lado1 + this.lado2;
+            }
+            toString() {
+                return `Triângulo [Cor: ${this.cor}, Base: ${this.base}, Altura: ${this.altura}, Lado1: ${this.lado1}, Lado2: ${this.lado2}]`;
+            }
+        }
+
+        // Criando as figuras
+        const figuras = [
+            new Circulo('Azul', 3),
+            new Retangulo('Vermelho', 4, 5),
+            new Triangulo('Amarelo', 3, 4, 3, 5)
+        ];
+
+        // Mostrando na tela
+        const divResultado = document.getElementById('resultado');
+
+        figuras.forEach(figura => {
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            card.innerHTML = `
+                <h2>${figura.constructor.name}</h2>
+                <p>${figura.toString()}</p>
+                <p><strong>Área:</strong> ${figura.calculaArea().toFixed(2)}</p>
+                <p><strong>Perímetro:</strong> ${figura.calculaPerimetro().toFixed(2)}</p>
+            `;
+
+            divResultado.appendChild(card);
+        });
+    </script>
+
+</body>
+</html>
