@@ -6,6 +6,7 @@ public class Circulo extends Figura{
 	public Circulo(String cor, double raio) {
 		super(cor);
 		this.raio = raio;
+		//testes
 	}
 
 	@Override
