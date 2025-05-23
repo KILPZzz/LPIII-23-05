@@ -21,3 +21,4 @@ Este projeto é uma simulação de figuras geométricas utilizando conceitos de 
 - ✔️ HTML5
 - ✔️ CSS3
 - ✔️ JavaScript (ES6+)
+sd
